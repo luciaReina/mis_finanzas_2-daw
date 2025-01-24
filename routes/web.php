@@ -7,5 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('incomes', IncomeController::class);
-Route::get('/incomes', [IncomeController::class, 'index']);
+// Mostrar la tabla
+Route::get('/incomes', [IncomeController::class, 'index'])->name('income.index');

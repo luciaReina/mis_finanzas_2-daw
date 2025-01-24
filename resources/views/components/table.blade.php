@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             @foreach ($tableData['data'] as $index => $row)
-            <tr class="border-b dark:border-gray-700 @if($index % 2 == 0) bg-white dark:bg-gray-800 @else bg-gray-100 dark:bg-gray-700 @endif">
+            <tr class="border-b dark:border-gray-700 @if($index % 2 != 0) bg-white dark:bg-gray-800 @else bg-gray-100 dark:bg-gray-700 @endif">
                 @foreach ($row as $cell)
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{$cell}}
@@ -22,3 +22,4 @@
         </tbody>
     </table>
 </div>
+

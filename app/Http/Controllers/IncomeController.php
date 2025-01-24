@@ -13,17 +13,22 @@ class IncomeController extends Controller
     {
         $tableData = [
             'heading' => [
-                'date','category','amount',
-            ],
-            'data' => [
+                'date','category','amount'],
+
+            'data' =>  [
                 ['12/12/2012','salary','2500'],
                 ['12/01/2013','salary','2500'],
                 ['12/02/2013','salary','2550']
-            ]
+            ],
 
         ]; 
+
+        $botonEnlace = [
+            'enlace' => 'http://localhost:8000/incomes',
+        ];
+        
         //Aquí la lógica de negocio para el index
-        return view('income.index',['title' => 'My incomes','tableData' => $tableData]);
+        return view('income.index',['title' => 'My incomes','tableData' => $tableData, 'botonEnlace' => $botonEnlace]);
         
     }
 
@@ -32,16 +37,16 @@ class IncomeController extends Controller
      */
     public function create()
     {
-        //
-        return '<p>Esta es la página del create de incomes</p>';
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
+    
     public function store(Request $request)
     {
-        //
+       //codigo aqui
     }
 
     /**
