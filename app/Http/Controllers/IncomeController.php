@@ -10,6 +10,7 @@ class IncomeController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         $incomes = Income::all(); // Puedes usar otros métodos como `where()`, `orderBy()`, etc.
@@ -26,7 +27,7 @@ class IncomeController extends Controller
         ];
 
         $botonEnlace = [
-            'enlace' => 'http://localhost:8000/incomes',
+            'enlace' => 'http://localhost:8000/outcomes',
         ];
         
         //Aquí la lógica de negocio para el index
