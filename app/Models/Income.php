@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Income extends Model
 {
     use HasFactory;
-    protected $fillable = ['date', 'category', 'amount'];
+    protected $fillable = ['amount', 'category', 'date'];
+
 }

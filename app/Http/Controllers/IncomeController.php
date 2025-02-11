@@ -27,11 +27,19 @@ class IncomeController extends Controller
         ];
 
         $botonEnlace = [
-            'enlace' => 'http://localhost:8000/outcomes',
+            'enlace' => route('income.create'),
         ];
         
-        //Aquí la lógica de negocio para el index
-        return view('income.index',['title' => 'My incomes','tableData' => $tableData, 'botonEnlace' => $botonEnlace]);
+        $botonEnlace2 = [
+            'enlace' => route('outcome.create'),
+        ];
+        
+        return view('income.index', [
+            'title' => 'My incomes',
+            'tableData' => $tableData,
+            'botonEnlace' => $botonEnlace,
+            'botonEnlace2' => $botonEnlace2, // Asegúrate de pasar también botonEnlace2
+        ]);
         //return view('income.index',['title' => 'My incomes','tableData' => $tableData]);
     }
 
@@ -40,17 +48,29 @@ class IncomeController extends Controller
      */
     public function create()
     {
-
+        return view('income.create', ['title' => 'Create Income']);
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     
-    public function store(Request $request)
-    {
-       //codigo aqui
-    }
+     public function store(Request $request)
+     {
+         $request->validate([
+             'amount' => 'required|numeric',
+             'category' => 'required|string|max:255',
+         ]);
+     
+         Income::create([
+             'amount' => $request->amount,
+             'category' => $request->category,
+         ]);
+     
+         return redirect()->route('income.index')->with('success', 'Income added successfully');
+     }
+     
 
     /**
      * Display the specified resource.
