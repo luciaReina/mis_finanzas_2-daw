@@ -13,14 +13,14 @@ class IncomeController extends Controller
     
     public function index()
     {
-        $incomes = Income::all(); // Puedes usar otros métodos como `where()`, `orderBy()`, etc.
+        $incomes = Income::all(); 
 
         $tableData = [
             'heading' => ['date', 'category', 'amount'],
             'data' => $incomes->map(function ($income) {
                 return [
-                    $income->created_at->format('d/m/Y'), // Formato de fecha
-                    'salary',
+                    $income->created_at->format('d/m/Y'),
+                    $income->category,
                     $income->amount,
                 ];
             }),
