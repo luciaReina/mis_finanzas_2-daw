@@ -37,9 +37,11 @@ class IncomeController extends Controller
         return view('income.index', [
             'title' => 'My incomes',
             'tableData' => $tableData,
+            'incomes' => $incomes,
             'botonEnlace' => $botonEnlace,
-            'botonEnlace2' => $botonEnlace2, // Asegúrate de pasar también botonEnlace2
+            'botonEnlace2' => $botonEnlace2, 
         ]);
+
         //return view('income.index',['title' => 'My incomes','tableData' => $tableData]);
     }
 
@@ -84,26 +86,32 @@ class IncomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Income $income)
     {
-        //
-        return '<p>Esta es la página del edit de incomes</p>';
+        return view('income.edit', compact('income'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Income $income)
     {
-        //
-        
+        $request->validate([
+            'amount' => 'required|numeric',
+            'category' => 'required|string|max:255',
+        ]);
+
+        $income->update($request->all());
+
+        return redirect()->route('income.index')->with('success', 'Income updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Income $income)
     {
-        //
+        $income->delete();
+        return redirect()->route('income.index')->with('success', 'Income deleted successfully');
     }
 }

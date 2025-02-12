@@ -1,14 +1,14 @@
 <x-layouts.index :title="'Edit Income'">
-    <form action="{{ route('income.update', $income->id) }}" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+    <form action="{{ route('income.update', $income->id) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <label class="block mb-2">Amount:</label>
-        <input type="number" name="amount" value="{{ $income->amount }}" required class="w-full border rounded p-2 mb-4">
+        <label>Amount:</label>
+        <input type="number" name="amount" value="{{ $income->amount }}" required>
 
-        <label class="block mb-2">Category:</label>
-        <input type="text" name="category" value="{{ $income->category }}" required class="w-full border rounded p-2 mb-4">
+        <label>Category:</label>
+        <input type="text" name="category" value="{{ $income->category }}" required>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Update Income</button>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Update</button>
     </form>
 </x-layouts.index>
