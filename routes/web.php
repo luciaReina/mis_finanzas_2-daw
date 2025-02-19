@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\OutcomeController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 //rutas para income
@@ -23,7 +25,6 @@ Route::put('/incomes/{income}', [IncomeController::class, 'update'])->name('inco
 Route::delete('/incomes/{income}', [IncomeController::class, 'destroy'])->name('income.destroy');
 
 
-
 //rutas para outcome
 Route::get('/outcomes', [OutcomeController::class, 'index'])->name('outcome.index');
 
@@ -36,3 +37,9 @@ Route::get('/outcomes/{outcome}/edit', [OutcomeController::class, 'edit'])->name
 Route::put('/outcomes/{outcome}', [OutcomeController::class, 'update'])->name('outcome.update');
 
 Route::delete('/outcomes/{outcome}', [OutcomeController::class, 'destroy'])->name('outcome.destroy');
+
+
+//category routes
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');

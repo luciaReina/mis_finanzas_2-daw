@@ -56,6 +56,8 @@ class OutcomeController extends Controller
             'category' => $request->category,
         ]);
 
+        session()->flash('success', 'Expense added successfully!');
+
         return redirect()->route('outcome.index')->with('success', 'Expense added successfully');
     }
 
@@ -89,6 +91,7 @@ class OutcomeController extends Controller
         ]);
 
         $outcome->update($request->all());
+
 
         return redirect()->route('outcome.index')->with('success', 'Expense updated successfully');
     }

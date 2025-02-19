@@ -69,6 +69,8 @@ class IncomeController extends Controller
              'amount' => $request->amount,
              'category' => $request->category,
          ]);
+
+         session()->flash('success', 'Income added successfully!');
      
          return redirect()->route('income.index')->with('success', 'Income added successfully');
      }
